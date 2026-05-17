@@ -1,0 +1,2423 @@
+=== \components\Comparison\Comparison.module.css ===
+.section {
+  padding: 5rem 0;
+  background: #000;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 3rem;
+  border-radius: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.featured {
+  border-color: var(--primary);
+  background: rgba(46, 79, 205, 0.05);
+  box-shadow: 0 20px 40px rgba(46, 79, 205, 0.1);
+  transform: scale(1.05);
+}
+
+.badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cardTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.iconRed {
+  color: #ff4d4d;
+}
+
+.iconGreen {
+  color: #4dfbaf;
+}
+
+.cta {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+.cta:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+@media (max-width: 768px) {
+  .featured {
+    transform: none;
+  }
+}
+
+
+=== \components\Comparison\Comparison.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Comparison.module.css';
+import { motion } from 'framer-motion';
+import { X, Check } from 'lucide-react';
+
+const Comparison = () => {
+  const points = [
+    "Viral Hook Strategy",
+    "Retention-Focused Editing",
+    "Professional Sound Design",
+    "Custom Motion Graphics",
+    "Scripting Assistance",
+    "Content Distribution Strategy",
+    "Dedicated Account Manager",
+    "24/7 Support"
+  ];
+
+  return (
+    <section className={styles.section}>
+      <div className="container">
+        <div className={styles.header}>
+          <h2 className={styles.title}>Why <span className="text-gradient">Choose Us?</span></h2>
+          <p className={styles.subtitle}>We don&apos;t just edit. We grow your brand.</p>
+        </div>
+
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <h3 className={styles.cardTitle}>Average Agency</h3>
+            <div className={styles.list}>
+              {points.map((point, index) => (
+                <div key={index} className={styles.item}>
+                  <X className={styles.iconRed} size={20} />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={`${styles.card} ${styles.featured}`}>
+            <div className={styles.badge}>Highly Recommended</div>
+            <h3 className={styles.cardTitle}>LETSMAKEVISUALS</h3>
+            <div className={styles.list}>
+              {points.map((point, index) => (
+                <div key={index} className={styles.item}>
+                  <Check className={styles.iconGreen} size={20} />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+            <button className={styles.cta}>Scale My Brand</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Comparison;
+
+
+=== \components\Contact\Contact.module.css ===
+.section {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-w: 600px;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.infoCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.infoText h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.infoText p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input, .textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1.25rem center;
+  background-size: 1em;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.select option {
+  background-color: #111;
+  color: #fff;
+  padding: 1rem;
+}
+
+.submitBtn {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  padding: 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0;
+  }
+  
+  .infoCard {
+    padding: 2rem;
+  }
+}
+
+
+=== \components\Contact\Contact.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Contact.module.css';
+import { motion } from 'framer-motion';
+import { Mail, MessageSquare, Send, Calendar } from 'lucide-react';
+import Magnetic from '../Effects/Magnetic';
+
+const Contact = () => {
+  return (
+    <section id="contact" className={styles.section}>
+      <div className={styles.header}>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className={styles.title}
+        >
+          Let's Create <span className="text-gradient">Magic</span>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className={styles.subtitle}
+        >
+          Ready to elevate your content? Fill out the form below or book a call with our team to get started.
+        </motion.p>
+      </div>
+
+      <div className={styles.container}>
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className={styles.infoCard}
+        >
+          <div className={styles.infoItem}>
+            <div className={styles.iconWrapper}>
+              <Mail size={24} />
+            </div>
+            <div className={styles.infoText}>
+              <h3>Email Us</h3>
+              <p>hello@letsmakevisuals.com</p>
+              <p>We usually reply within 24 hours.</p>
+            </div>
+          </div>
+          
+          <div className={styles.infoItem}>
+            <div className={styles.iconWrapper}>
+              <Calendar size={24} />
+            </div>
+            <div className={styles.infoText}>
+              <h3>Book a Call</h3>
+              <p>Schedule a 15-minute discovery call.</p>
+              <p style={{ marginTop: '0.5rem' }}>
+                <a href="#" className="text-gradient" style={{ fontWeight: 600 }}>Choose a time →</a>
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.infoItem}>
+            <div className={styles.iconWrapper}>
+              <MessageSquare size={24} />
+            </div>
+            <div className={styles.infoText}>
+              <h3>Social Media</h3>
+              <p>Follow us for tips and our latest work.</p>
+              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                <a href="#" className="text-gradient">Instagram</a>
+                <a href="#" className="text-gradient">Twitter</a>
+                <a href="#" className="text-gradient">LinkedIn</a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div className={styles.inputGroup}>
+                <label className={styles.label}>First Name</label>
+                <input type="text" className={styles.input} placeholder="John" required />
+              </div>
+              <div className={styles.inputGroup}>
+                <label className={styles.label}>Last Name</label>
+                <input type="text" className={styles.input} placeholder="Doe" required />
+              </div>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Email Address</label>
+              <input type="email" className={styles.input} placeholder="john@example.com" required />
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>What are you looking for?</label>
+              <select className={styles.select} required defaultValue="">
+                <option value="" disabled>Select a service</option>
+                <option value="shorts">Short-form Content (TikTok, Reels, Shorts)</option>
+                <option value="longform">Long-form Content (YouTube, Podcasts)</option>
+                <option value="ads">Video Ads & UGC</option>
+                <option value="other">Other / Custom Request</option>
+              </select>
+            </div>
+
+            <div className={styles.inputGroup}>
+              <label className={styles.label}>Message</label>
+              <textarea className={styles.textarea} placeholder="Tell us about your project..." required></textarea>
+            </div>
+
+            <Magnetic>
+              <button type="submit" className={styles.submitBtn}>
+                Send Message <Send size={18} />
+              </button>
+            </Magnetic>
+          </form>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
+
+
+=== \components\Effects\Atmosphere.module.css ===
+.atmosphere {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  background-repeat: repeat;
+  z-index: 10;
+}
+
+.mouseGlow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.5;
+  filter: blur(100px);
+}
+
+@media (max-width: 1024px) {
+  .mouseGlow {
+    display: none;
+  }
+}
+
+
+=== \components\Effects\Atmosphere.tsx ===
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import styles from './Atmosphere.module.css';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+
+const Atmosphere = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  return (
+    <div className={styles.atmosphere}>
+      <div className={styles.noise}></div>
+      <motion.div 
+        className={styles.mouseGlow}
+        style={{
+          left: smoothX,
+          top: smoothY,
+        }}
+      />
+    </div>
+  );
+};
+
+
+export default Atmosphere;
+
+
+=== \components\Effects\CustomCursor.module.css ===
+.cursor {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+}
+
+.cursorDot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1024px) {
+  .cursor, .cursorDot {
+    display: none;
+  }
+}
+
+
+=== \components\Effects\CustomCursor.tsx ===
+"use client";
+
+import React, { useEffect, useState } from 'react';
+import styles from './CustomCursor.module.css';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+
+const CustomCursor = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+
+  const springConfig = { damping: 25, stiffness: 400 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
+
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
+    };
+
+    const handleHover = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('button') || target.closest('a')) {
+        setIsHovered(true);
+      } else {
+        setIsHovered(false);
+      }
+    };
+
+    const handleMouseOut = () => {
+      cursorX.set(-100);
+      cursorY.set(-100);
+    };
+
+    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('mouseover', handleHover);
+    window.addEventListener('mouseout', handleMouseOut);
+    
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+      window.removeEventListener('mouseover', handleHover);
+      window.removeEventListener('mouseout', handleMouseOut);
+    };
+
+  }, [cursorX, cursorY]);
+
+  return (
+    <>
+      <motion.div
+        className={styles.cursor}
+        style={{
+          left: cursorXSpring,
+          top: cursorYSpring,
+        }}
+        animate={{
+          scale: isHovered ? 2.5 : 1,
+          backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.1)' : 'rgba(255, 255, 255, 1)',
+          border: isHovered ? '1px solid rgba(255, 255, 255, 0.2)' : 'none'
+        }}
+      />
+      <motion.div
+        className={styles.cursorDot}
+        style={{
+          left: cursorX,
+          top: cursorY,
+        }}
+      />
+    </>
+  );
+};
+
+export default CustomCursor;
+
+
+=== \components\Effects\Magnetic.tsx ===
+"use client";
+
+import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+
+const Magnetic = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (window.innerWidth <= 1024) return;
+    const { clientX, clientY } = e;
+    const { width, height, left, top } = ref.current?.getBoundingClientRect() || { width: 0, height: 0, left: 0, top: 0 };
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
+    setPosition({ x: middleX * 0.15, y: middleY * 0.15 });
+  };
+
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const { x, y } = position;
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x, y }}
+      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export default Magnetic;
+
+
+=== \components\FAQ\FAQ.module.css ===
+.section {
+  padding: 5rem 0;
+  background: #000;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+}
+
+.list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.faqItem:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.question {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.answer {
+  padding: 0 2rem 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+
+=== \components\FAQ\FAQ.tsx ===
+"use client";
+
+import React, { useState } from 'react';
+import styles from './FAQ.module.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Plus, Minus } from 'lucide-react';
+
+const faqs = [
+  {
+    question: "What is your turnaround time?",
+    answer: "Typically, we deliver the first draft within 24-48 hours. Depending on the complexity and volume, this may vary, but we prioritize speed without compromising quality."
+  },
+  {
+    question: "Which platforms do you support?",
+    answer: "We specialize in TikTok, Instagram Reels, and YouTube Shorts. We also handle long-form YouTube editing and LinkedIn video content."
+  },
+  {
+    question: "Do you provide the raw files?",
+    answer: "Yes, we can provide project files upon request, depending on the plan you choose."
+  },
+  {
+    question: "How do revisions work?",
+    answer: "We offer unlimited revisions until you are 100% satisfied. Our goal is to make sure the content perfectly aligns with your brand voice."
+  },
+  {
+    question: "How do I get started?",
+    answer: "Simply book a discovery call through our website. We'll discuss your goals, content style, and how we can best support your growth."
+  }
+];
+
+const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className={styles.faqItem}>
+      <button className={styles.question} onClick={() => setIsOpen(!isOpen)}>
+        <span>{question}</span>
+        {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className={styles.answer}
+          >
+            <p>{answer}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const FAQ = () => {
+  return (
+    <section id="faq" className={styles.section}>
+      <div className="container">
+        <div className={styles.header}>
+          <h2 className={styles.title}>Frequently Asked <span className="text-gradient">Questions</span></h2>
+        </div>
+        <div className={styles.list}>
+          {faqs.map((faq, index) => (
+            <FAQItem key={index} {...faq} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQ;
+
+
+=== \components\Footer\Footer.module.css ===
+.footer {
+  padding: 8rem 0 2rem;
+  background: #000;
+  border-top: 1px solid var(--card-border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.tagline {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s ease;
+  border: 1px solid var(--card-border);
+}
+
+.socialLink:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+}
+
+.groupTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.linksGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.link, .text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.footerCta {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.footerCta:hover {
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.bottom {
+  border-top: 1px solid var(--card-border);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+
+=== \components\Footer\Footer.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Footer.module.css';
+import Link from 'next/link';
+const Instagram = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+  </svg>
+);
+
+const Twitter = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+  </svg>
+);
+
+const Youtube = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+  </svg>
+);
+
+const Linkedin = ({ size = 24 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+  </svg>
+);
+
+const Footer = () => {
+  return (
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.grid}>
+          <div className={styles.brand}>
+            <Link href="/" className={styles.logo}>
+              LETSMAKE<span>VISUALS</span>
+            </Link>
+            <p className={styles.tagline}>
+              Empowering creators to reach millions through high-performance visual storytelling.
+            </p>
+            <div className={styles.socials}>
+              <a href="#" className={styles.socialLink}><Instagram size={20} /></a>
+              <a href="#" className={styles.socialLink}><Twitter size={20} /></a>
+              <a href="#" className={styles.socialLink}><Youtube size={20} /></a>
+              <a href="#" className={styles.socialLink}><Linkedin size={20} /></a>
+            </div>
+          </div>
+
+
+          <div className={styles.linksGroup}>
+            <h4 className={styles.groupTitle}>Company</h4>
+            <Link href="#services" className={styles.link}>Services</Link>
+            <Link href="#portfolio" className={styles.link}>Portfolio</Link>
+            <Link href="#testimonials" className={styles.link}>Testimonials</Link>
+            <Link href="#faq" className={styles.link}>FAQ</Link>
+          </div>
+
+          <div className={styles.linksGroup}>
+            <h4 className={styles.groupTitle}>Legal</h4>
+            <Link href="#" className={styles.link}>Privacy Policy</Link>
+            <Link href="#" className={styles.link}>Terms of Service</Link>
+            <Link href="#" className={styles.link}>Cookie Policy</Link>
+          </div>
+
+          <div className={styles.linksGroup}>
+            <h4 className={styles.groupTitle}>Contact</h4>
+            <p className={styles.text}>hello@letsmakevisuals.com</p>
+            <p className={styles.text}>London, United Kingdom</p>
+            <button className={styles.footerCta}>Book a Call</button>
+          </div>
+        </div>
+
+        <div className={styles.bottom}>
+          <p>© {new Date().getFullYear()} LETSMAKEVISUALS. All rights reserved.</p>
+          <p>Built with Passion for Creators.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+=== \components\Hero\Hero.module.css ===
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-height);
+  overflow: hidden;
+  background: #000;
+}
+
+.glow1 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -10%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  gap: 4rem;
+}
+
+.content {
+  max-width: 900px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+}
+
+.badge span {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.1rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.primaryBtn {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.secondaryBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.secondaryBtn:hover {
+  opacity: 0.8;
+}
+
+.playIcon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+}
+
+.videoWrapper {
+  width: 100%;
+  max-width: 1000px;
+  perspective: 1000px;
+}
+
+.videoContainer {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-out;
+}
+
+.videoContainer:hover {
+  transform: rotateX(2deg) rotateY(-2deg) scale(1.02);
+}
+
+.videoPlaceholder {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.4) 0%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  .title {
+    letter-spacing: -1px;
+  }
+  
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .primaryBtn {
+    justify-content: center;
+  }
+  
+  .secondaryBtn {
+    justify-content: center;
+  }
+}
+
+
+=== \components\Hero\Hero.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Hero.module.css';
+import { motion } from 'framer-motion';
+import { ArrowRight, Play } from 'lucide-react';
+
+import Magnetic from '../Effects/Magnetic';
+
+const Hero = () => {
+  return (
+    <section className={styles.hero}>
+      <div className={styles.glow1}></div>
+      <div className={styles.glow2}></div>
+      
+      <div className={`container ${styles.container}`}>
+        <div className={styles.content}>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className={styles.badge}
+          >
+            <span>New</span> Elevate Your Content Strategy
+          </motion.div>
+          
+          <h1 className={styles.title}>
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{ display: 'block' }}
+            >
+              Mastering the Art of
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-gradient"
+              style={{ display: 'block' }}
+            >
+              Viral Storytelling
+            </motion.span>
+          </h1>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className={styles.description}
+          >
+            We help creators and brands scale through high-performance short-form content. 
+            From scripting to distribution, we handle everything.
+          </motion.p>
+          
+          <div className={styles.actions}>
+            <Magnetic>
+              <button className={styles.primaryBtn}>
+                Get Started <ArrowRight size={20} />
+              </button>
+            </Magnetic>
+            <Magnetic>
+              <button className={styles.secondaryBtn}>
+                <div className={styles.playIcon}><Play size={16} fill="white" /></div>
+                Watch Showreel
+              </button>
+            </Magnetic>
+          </div>
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className={styles.videoWrapper}
+        >
+          <div className={styles.videoContainer}>
+            <div className={styles.videoPlaceholder}>
+              <video 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+                className={styles.video}
+              >
+                <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4" />
+              </video>
+              <div className={styles.videoOverlay}></div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+
+export default Hero;
+
+
+=== \components\Navbar\Navbar.module.css ===
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  background: #000;
+  border-bottom: 1px solid var(--card-border);
+  height: 70px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.desktopLinks {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .desktopLinks {
+    display: none;
+  }
+}
+
+.link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #fff;
+}
+
+.cta {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px var(--primary-glow);
+  background: #3b5ce0;
+}
+
+.mobileToggle {
+  display: none;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .mobileToggle {
+    display: block;
+  }
+}
+
+.mobileMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #000;
+  border-bottom: 1px solid var(--card-border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 999;
+}
+
+.mobileLink {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.mobileCta {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+=== \components\Navbar\Navbar.tsx ===
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import styles from './Navbar.module.css';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import Magnetic from '../Effects/Magnetic';
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'Services', href: '#services' },
+    { name: 'Portfolio', href: '#portfolio' },
+    { name: 'Testimonials', href: '#testimonials' },
+    { name: 'FAQ', href: '#faq' },
+  ];
+
+  return (
+    <nav className={`${styles.nav} ${isScrolled ? styles.scrolled : ''}`}>
+      <div className={`container ${styles.container}`}>
+        <Magnetic>
+          <Link href="/" className={styles.logo}>
+            LETSMAKE<span>VISUALS</span>
+          </Link>
+        </Magnetic>
+
+        <div className={styles.desktopLinks}>
+          {navLinks.map((link) => (
+            <Magnetic key={link.name}>
+              <Link href={link.href} className={styles.link}>
+                {link.name}
+              </Link>
+            </Magnetic>
+          ))}
+          <Magnetic>
+            <button className={styles.cta}>Book a Call</button>
+          </Magnetic>
+        </div>
+
+
+        <button 
+          className={styles.mobileToggle}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className={styles.mobileMenu}
+          >
+            {navLinks.map((link) => (
+              <Link 
+                key={link.name} 
+                href={link.href} 
+                className={styles.mobileLink}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <button className={styles.mobileCta}>Book a Call</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+=== \components\Portfolio\Portfolio.module.css ===
+.section {
+  padding: 5rem 0;
+  background: #000;
+}
+
+.header {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: 1px solid var(--card-border);
+}
+
+.tab {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.activeTab {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  border: 1px solid var(--card-border);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.itemCategory {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.itemTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+=== \components\Portfolio\Portfolio.tsx ===
+"use client";
+
+import React, { useState } from 'react';
+import styles from './Portfolio.module.css';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const categories = ['All', 'YouTube', 'Shorts', 'Ads', 'Course'];
+
+const items = [
+  { id: 1, category: 'Shorts', title: 'Viral Hook Optimization', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=600' },
+  { id: 2, category: 'YouTube', title: 'Documentary Style Editing', img: 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=600' },
+  { id: 3, category: 'Ads', title: 'High Conversion UGC', img: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=600' },
+  { id: 4, category: 'Course', title: 'Educational Content Design', img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600' },
+  { id: 5, category: 'Shorts', title: 'Gaming Highlights Reel', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=600' },
+  { id: 6, category: 'YouTube', title: 'Vlog Storytelling', img: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=600' },
+];
+
+const Portfolio = () => {
+  const [activeCategory, setActiveCategory] = useState('All');
+
+  const filteredItems = activeCategory === 'All' 
+    ? items 
+    : items.filter(item => item.category === activeCategory);
+
+  return (
+    <section id="portfolio" className={styles.section}>
+      <div className="container">
+        <div className={styles.header}>
+          <h2 className={styles.title}>Our <span className="text-gradient">Masterpieces</span></h2>
+          <div className={styles.tabs}>
+            {categories.map((cat) => (
+              <button 
+                key={cat}
+                className={`${styles.tab} ${activeCategory === cat ? styles.activeTab : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <motion.div layout className={styles.grid}>
+          <AnimatePresence mode='popLayout'>
+            {filteredItems.map((item) => (
+              <motion.div 
+                layout
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className={styles.card}
+              >
+                <img src={item.img} alt={item.title} className={styles.image} />
+                <div className={styles.overlay}>
+                  <span className={styles.itemCategory}>{item.category}</span>
+                  <h3 className={styles.itemTitle}>{item.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Portfolio;
+
+
+=== \components\Services\Services.module.css ===
+.section {
+  padding: 5rem 0;
+  background: #000;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 3rem 2rem;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+}
+
+.card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.card:hover {
+  transform: translateY(-10px) rotate(0deg) scale(1.02);
+  border-color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.card:hover .iconWrapper {
+  background: var(--accent-color);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.cardGlow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  filter: blur(50px);
+  z-index: -1;
+}
+
+.card:hover .cardGlow {
+  opacity: 0.1;
+}
+
+@media (max-width: 768px) {
+  .card {
+    transform: none !important;
+  }
+}
+
+
+=== \components\Services\Services.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Services.module.css';
+import { motion } from 'framer-motion';
+import { Video, PenTool, TrendingUp, Zap } from 'lucide-react';
+
+const services = [
+  {
+    icon: <Video size={32} />,
+    title: "High-End Editing",
+    description: "Retain attention with rapid-fire cuts, dynamic subtitles, and cinematic sound design.",
+    color: "var(--primary)"
+  },
+  {
+    icon: <PenTool size={32} />,
+    title: "Viral Scripting",
+    description: "Hooks that stop the scroll and scripts that drive engagement and conversions.",
+    color: "var(--accent)"
+  },
+  {
+    icon: <TrendingUp size={32} />,
+    title: "Growth Strategy",
+    description: "Data-driven approach to distribution across TikTok, Reels, and YouTube Shorts.",
+    color: "#4CC9F0"
+  },
+  {
+    icon: <Zap size={32} />,
+    title: "Full Management",
+    description: "Complete hands-off solution from content ideation to final posting and analytics.",
+    color: "#F72585"
+  }
+];
+
+import Magnetic from '../Effects/Magnetic';
+
+const Services = () => {
+  return (
+    <section id="services" className={styles.section}>
+      <div className="container">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className={styles.header}
+        >
+          <h2 className={styles.title}>All-In-One <span className="text-gradient">Powerhouse</span></h2>
+          <p className={styles.subtitle}>Everything you need to dominate the short-form landscape.</p>
+        </motion.div>
+        
+        <div className={styles.grid}>
+          {services.map((service, index) => (
+            <Magnetic key={index}>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className={styles.card}
+                style={{ '--accent-color': service.color } as any}
+              >
+                <div className={styles.iconWrapper}>
+                  {service.icon}
+                </div>
+                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <p className={styles.cardDescription}>{service.description}</p>
+                <div className={styles.cardGlow}></div>
+              </motion.div>
+            </Magnetic>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+export default Services;
+
+
+=== \components\SocialProof\SocialProof.module.css ===
+.section {
+  padding: 2rem 0;
+  background: #000;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.label {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.marqueeContainer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marqueeContainer::before,
+.marqueeContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marqueeContainer::before {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.marqueeContainer::after {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+.marquee {
+  display: flex;
+  gap: 4rem;
+  width: max-content;
+}
+
+.logoItem {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.logoItem:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+=== \components\SocialProof\SocialProof.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './SocialProof.module.css';
+import { motion } from 'framer-motion';
+
+const logos = [
+  'Creator A', 'Brand B', 'Influencer C', 'Studio D', 'Media E', 'Agency F',
+  'Creator G', 'Brand H', 'Influencer I', 'Studio J', 'Media K', 'Agency L'
+];
+
+const SocialProof = () => {
+  return (
+    <section className={styles.section}>
+      <div className="container">
+        <p className={styles.label}>Trusted by the world&apos;s best creators & brands</p>
+        
+        <div className={styles.marqueeContainer}>
+          <motion.div 
+            className={styles.marquee}
+            animate={{ x: [0, -1000] }}
+            transition={{ 
+              duration: 20, 
+              repeat: Infinity, 
+              ease: "linear" 
+            }}
+          >
+            {[...logos, ...logos].map((logo, index) => (
+              <div key={index} className={styles.logoItem}>
+                {logo}
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SocialProof;
+
+
+=== \components\Testimonials\Testimonials.module.css ===
+.section {
+  padding: 5rem 0;
+  background: #000;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 3rem;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.quoteIcon {
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.content {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #fff;
+  font-style: italic;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.role {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+
+=== \components\Testimonials\Testimonials.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Testimonials.module.css';
+import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
+
+const testimonials = [
+  {
+    name: "Alex Hormozi",
+    role: "Acquisition.com",
+    content: "The best in the game. They understand retention better than anyone I've worked with.",
+    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200"
+  },
+  {
+    name: "Iman Gadzhi",
+    role: "Agency Owner",
+    content: "Scale was effortless once we brought them on. Quality is unmatched.",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200"
+  },
+  {
+    name: "Vanessa Lau",
+    role: "Content Creator",
+    content: "My engagement tripled in the first month. They are true partners in growth.",
+    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=200"
+  }
+];
+
+const Testimonials = () => {
+  return (
+    <section id="testimonials" className={styles.section}>
+      <div className="container">
+        <div className={styles.header}>
+          <h2 className={styles.title}>Results That <span className="text-gradient">Speak</span></h2>
+        </div>
+        
+        <div className={styles.grid}>
+          {testimonials.map((t, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={styles.card}
+            >
+              <Quote className={styles.quoteIcon} size={40} />
+              <p className={styles.content}>{t.content}</p>
+              <div className={styles.author}>
+                <img src={t.img} alt={t.name} className={styles.avatar} />
+                <div className={styles.info}>
+                  <h4 className={styles.name}>{t.name}</h4>
+                  <p className={styles.role}>{t.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
+
+
+=== \components\Upgrade\Upgrade.module.css ===
+.section {
+  position: relative;
+  padding: 5rem 0;
+  background: #000;
+  overflow: hidden;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.floatingBadge {
+  position: absolute;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  pointer-events: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.statsGrid {
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.statHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.value {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.unit {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sublabel {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 992px) {
+  .statsGrid {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .floatingBadge {
+    display: none;
+  }
+  
+  .statsGrid {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .statItem {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+
+=== \components\Upgrade\Upgrade.tsx ===
+"use client";
+
+import React from 'react';
+import styles from './Upgrade.module.css';
+import { motion } from 'framer-motion';
+
+const Upgrade = () => {
+  const floatingBadges = [
+    { text: "Fast Editing", top: "15%", left: "5%", rotate: -15, color: "var(--primary)" },
+    { text: "Ad Creatives & VSL", top: "40%", left: "2%", rotate: 10, color: "var(--accent)" },
+    { text: "Short Form Content", top: "10%", right: "5%", rotate: 12, color: "var(--primary)" },
+    { text: "Youtube Videos", top: "35%", right: "2%", rotate: -8, color: "var(--accent)" },
+  ];
+
+  const stats = [
+    { value: "200", unit: "%", label: "More Engagement", sublabel: "Viral Edits" },
+    { value: "5", unit: "X", label: "More Reach", sublabel: "Strategic Distribution" },
+    { value: "50", unit: "%", label: "More Leads", sublabel: "Automated Systems" },
+  ];
+
+  return (
+    <section className={styles.section}>
+      {floatingBadges.map((badge, index) => (
+        <motion.div 
+          key={index}
+          className={styles.floatingBadge}
+          style={{ 
+            top: badge.top, 
+            left: badge.left, 
+            right: badge.right,
+            transform: `rotate(${badge.rotate}deg)`,
+            backgroundColor: badge.color
+          }}
+          animate={{ 
+            y: [0, -15, 0],
+            rotate: [badge.rotate, badge.rotate + 5, badge.rotate]
+          }}
+          transition={{ 
+            duration: 4 + index, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        >
+          {badge.text}
+        </motion.div>
+      ))}
+
+      <div className={`container ${styles.container}`}>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className={styles.title}
+        >
+          Tired of boring video content that don&apos;t stand out? <br />
+          <span className="text-gradient">It&apos;s time to upgrade the game with us!</span>
+        </motion.h2>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, staggerChildren: 0.2 }}
+          viewport={{ once: true }}
+          className={styles.statsGrid}
+        >
+          {stats.map((stat, index) => (
+            <motion.div 
+              key={index}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 }
+              }}
+              className={styles.statItem}
+            >
+              <div className={styles.statHeader}>
+                <motion.span 
+                  initial={{ scale: 0.5, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ type: "spring", stiffness: 100, delay: index * 0.2 + 0.5 }}
+                  className={styles.value}
+                >
+                  {stat.value}
+                </motion.span>
+                <span className={styles.unit}>{stat.unit}</span>
+                <span className={styles.label}>{stat.label}</span>
+              </div>
+              <p className={styles.sublabel}>{stat.sublabel}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+
+    </section>
+  );
+};
+
+export default Upgrade;
+
+
