@@ -1,8 +1,39 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Upgrade.module.css';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate, useInView } from 'framer-motion';
+
+const AnimatedCounter = ({ value, delay, className }: { value: string | number, delay: number, className?: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const strValue = String(value);
+
+  return (
+    <span ref={ref} className={className} style={{ display: 'inline-flex', overflow: 'hidden', padding: '0.1em 0' }}>
+      {strValue.split('').map((char, i) => {
+        const isEven = i % 2 === 0;
+        const initialY = isEven ? 50 : -50;
+        
+        return (
+          <motion.span
+            key={i}
+            initial={{ y: initialY, opacity: 0 }}
+            animate={isInView ? { y: 0, opacity: 1 } : { y: initialY, opacity: 0 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: delay + (i * 0.1), 
+              ease: [0.16, 1, 0.3, 1] // Custom bezier for smooth spring-like carousel feel
+            }}
+            style={{ display: 'inline-block' }}
+          >
+            {char}
+          </motion.span>
+        );
+      })}
+    </span>
+  );
+};
 
 const Upgrade = () => {
   const floatingBadges = [
@@ -74,14 +105,11 @@ const Upgrade = () => {
               className={styles.statItem}
             >
               <div className={styles.statHeader}>
-                <motion.span 
-                  initial={{ scale: 0.5, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  transition={{ type: "spring", stiffness: 100, delay: index * 0.2 + 0.5 }}
-                  className={styles.value}
-                >
-                  {stat.value}
-                </motion.span>
+                <AnimatedCounter 
+                  value={stat.value} 
+                  delay={index * 0.2 + 0.5} 
+                  className={styles.value} 
+                />
                 <span className={styles.unit}>{stat.unit}</span>
                 <span className={styles.label}>{stat.label}</span>
               </div>
