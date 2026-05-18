@@ -43,6 +43,7 @@
 
 .content {
   max-width: 900px;
+  padding-top: 65px;
 }
 
 .badge {
@@ -71,11 +72,12 @@
 }
 
 .title {
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 800;
+  font-size: clamp(1rem, 6vw, 3rem);
+  font-weight: 700;
   line-height: 1.1;
   margin-bottom: 1.5rem;
   letter-spacing: -2px;
+  color: #a8aeb6;
 }
 
 .description {

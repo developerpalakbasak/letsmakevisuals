@@ -9,10 +9,14 @@
 }
 
 .title {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
+   font-size: clamp(1rem, 6vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+  color: #a8aeb6;
 }
+
 
 .subtitle {
   font-size: 1.1rem;

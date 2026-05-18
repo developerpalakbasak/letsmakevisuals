@@ -15,14 +15,14 @@ const Hero = () => {
 
       <div className={`container ${styles.container}`}>
         <div className={styles.content}>
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
             className={styles.badge}
           >
             <span>New</span> Elevate Your Content Strategy
-          </motion.div>
+          </motion.div> */}
 
           <h1 className={styles.title}>
             <motion.span
@@ -31,7 +31,9 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.1 }}
               style={{ display: 'block' }}
             >
-              Mastering the Art of
+              Get More Leads
+              <br />
+              Using
             </motion.span>
             <motion.span
               initial={{ opacity: 0, y: 50 }}
@@ -40,7 +42,7 @@ const Hero = () => {
               className="text-gradient"
               style={{ display: 'block' }}
             >
-              Viral Storytelling
+              Quality Video Content
             </motion.span>
           </h1>
 
@@ -50,8 +52,7 @@ const Hero = () => {
             transition={{ duration: 1, delay: 0.6 }}
             className={styles.description}
           >
-            We help creators and brands scale through high-performance short-form content.
-            From scripting to distribution, we handle everything.
+            We help entrepreneurs and businesses with Done-For-You organic content systems that generate leads on autopilot.
           </motion.p>
 
           <div className={styles.actions}>

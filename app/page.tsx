@@ -7,6 +7,7 @@ import Comparison from "@/components/Comparison/Comparison";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import FAQ from "@/components/FAQ/FAQ";
 import Contact from "@/components/Contact/Contact";
+import WorkMarquee from "@/components/WorkMarquee/WorkMarquee";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <SocialProof />
       <Upgrade />
       <Services />
+      <WorkMarquee />
       <Portfolio />
       <Comparison />
       <Testimonials />
