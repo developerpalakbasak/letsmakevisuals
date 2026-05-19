@@ -1,31 +1,8 @@
-# Letsmakevisuals - Premium Video Editing Agency
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A high-end, premium landing page for **Letsmakevisuals**, a top-tier video editing agency specializing in Shorts, TikToks, Ads, and YouTube long-form content. Built with modern web technologies, this project features dynamic animations, custom cursors, and a sleek glassmorphism design.
+## Getting Started
 
-## 🚀 Tech Stack
-
-- **Framework**: [Next.js](https://nextjs.org/) (React 19)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/) for smooth scroll reveals, magnetic elements, and layout transitions.
-- **Icons**: [Lucide React](https://lucide.dev/) for crisp, scalable vector icons.
-- **Styling**: Custom Raw CSS Modules (`.module.css`) implementing an advanced dark mode theme with primary/accent gradients and glassmorphism.
-
-## ✨ Features
-
-- **Custom Cursor & Magnetic Buttons**: An interactive, premium feel using dynamic cursor tracking and magnetic elements.
-- **Glassmorphism UI**: Beautiful, semi-transparent frosted glass panels across the interface.
-- **Scroll Animations**: Sections reveal seamlessly on scroll using `framer-motion`.
-- **Responsive Layouts**: Fully responsive grid layouts tailored for mobile, tablet, and desktop devices.
-- **Modular Components**: Clean architecture with reusable components including `Hero`, `SocialProof`, `Services`, `Portfolio`, `Testimonials`, `FAQ`, and `Contact`.
-
-## 📦 Getting Started
-
-First, ensure you have the required dependencies installed:
-
-```bash
-npm install
-```
-
-Then, run the development server:
+First, run the development server:
 
 ```bash
 npm run dev
@@ -39,29 +16,21 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📁 Project Structure
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```text
-app/                 # Next.js App Router (Pages, Layout, Globals)
-components/          # Modular UI Components
-  ├── Comparison/    # Why choose us vs. others
-  ├── Contact/       # Contact form & booking section
-  ├── Effects/       # Custom Cursor, Magnetic buttons, Atmosphere
-  ├── FAQ/           # Accordion style FAQ section
-  ├── Hero/          # High-impact top section with abstract video background
-  ├── Navbar/        # Fixed, glassy navigation bar
-  ├── Portfolio/     # Filtering gallery for video works
-  ├── Services/      # Overview of editing services
-  ├── SocialProof/   # Client logos and trust markers
-  ├── Testimonials/  # Client reviews and quotes
-  └── Upgrade/       # Premium tier / upgrade call to action
-public/              # Static assets (images, videos, fonts)
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🎨 Styling Convention
+## Learn More
 
-This project intentionally utilizes **Raw CSS Modules** for precision styling, allowing detailed control over hover states, pseudo-elements, complex grid architectures, and CSS variables defined in `app/globals.css`. 
+To learn more about Next.js, take a look at the following resources:
 
-## 🌐 Deployment
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new) from the creators of Next.js. Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
