@@ -52,8 +52,11 @@ const Services = () => {
           viewport={{ once: true }}
           className={styles.header}
         >
-          <h2 className={styles.title}>All-In-One <span className="text-gradient">Powerhouse</span></h2>
-          <p className={styles.subtitle}>Everything you need to dominate the short-form landscape.</p>
+          <h5 className={styles.subtitle}>OUR PROCESS.</h5>
+          <h2 className={styles.title}>Our strategy to get
+            <br />
+            <span className="text-gradient">you leads with content
+            </span></h2>
         </motion.div>
 
         <div className={styles.timeline} ref={timelineRef}>

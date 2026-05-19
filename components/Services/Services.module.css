@@ -1,5 +1,5 @@
 .section {
-  padding: 5rem 0;
+  padding: 3rem 0;
   background: #000;
   position: relative;
 }
@@ -10,17 +10,20 @@
 }
 
 .title {
-  font-size: clamp(1rem, 6vw, 3rem);
+  font-size: clamp(1rem, 5vw, 2rem);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   letter-spacing: -2px;
   color: #a8aeb6;
 }
 
 .subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .timeline {

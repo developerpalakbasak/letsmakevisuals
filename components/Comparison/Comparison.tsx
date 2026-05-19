@@ -27,7 +27,7 @@ const Comparison = () => {
 
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h3 className={styles.cardTitle}>Average Agency</h3>
+            <p className={styles.cardTitle}>Average Agency</p>
             <div className={styles.list}>
               {points.map((point, index) => (
                 <div key={index} className={styles.item}>
@@ -40,7 +40,7 @@ const Comparison = () => {
 
           <div className={`${styles.card} ${styles.featured}`}>
             <div className={styles.badge}>Highly Recommended</div>
-            <h3 className={styles.cardTitle}>LETSMAKEVISUALS</h3>
+            <p className={styles.cardTitle}>LETSMAKEVISUALS</p>
             <div className={styles.list}>
               {points.map((point, index) => (
                 <div key={index} className={styles.item}>
