@@ -40,7 +40,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-gradient block"
             >
-              Quality Video Content
+              Premium Quality Video Content
             </motion.span>
           </h1>
 

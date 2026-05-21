@@ -30,12 +30,12 @@ const Testimonials = () => {
     <section id="testimonials" className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-[clamp(1rem,6vw,3rem)] font-bold leading-[1.1] mb-6 tracking-[-2px] text-[#a8aeb6]">Results That <span className="text-gradient">Speak</span></h2>
+          <h2 className="text-[clamp(1rem,6vw,3rem)] text-center font-bold leading-[1.1] mb-6 tracking-[-2px] text-[#a8aeb6]">Results That <span className="text-gradient">Speak</span></h2>
         </div>
-        
+
         <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
           {testimonials.map((t, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

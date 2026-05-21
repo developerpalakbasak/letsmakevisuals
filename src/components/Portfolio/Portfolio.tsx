@@ -17,18 +17,24 @@ const items = [
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const filteredItems = activeCategory === 'All' 
-    ? items 
+  const filteredItems = activeCategory === 'All'
+    ? items
     : items.filter(item => item.category === activeCategory);
 
   return (
-    <section id="portfolio" className="py-20 bg-black">
+    <section id="portfolio" className="py-10 bg-black">
       <div className="container mx-auto px-4">
         <div className="mb-16 flex flex-col items-center gap-8">
-          <h2 className="text-[clamp(1rem,6vw,3rem)] font-bold leading-[1.1] mb-6 tracking-[-2px] text-[#a8aeb6]">Our <span className="text-gradient">Masterpieces</span></h2>
+          <div className='flex flex-col gap-2 justify-center items-center'>
+            <p>Our Work</p>
+            <h2 className="text-[clamp(1rem,6vw,3rem)] text-center font-bold leading-[1.1] mb-6 tracking-[-2px] text-[#a8aeb6]">Some of Our
+              <br />
+              <span className="text-gradient">
+                Featured Projects</span></h2>
+          </div>
           <div className="flex gap-4 flex-wrap justify-center bg-[rgba(255,255,255,0.05)] p-2 rounded-[50px] border border-[var(--card-border)]">
             {categories.map((cat) => (
-              <button 
+              <button
                 key={cat}
                 className={`py-[0.6rem] px-[1.5rem] rounded-[50px] font-semibold text-[0.9rem] text-[var(--text-secondary)] transition-all duration-300 ${activeCategory === cat ? 'bg-[var(--primary)] text-white shadow-[0_0_15px_var(--primary-glow)]' : ''}`}
                 onClick={() => setActiveCategory(cat)}
@@ -42,7 +48,7 @@ const Portfolio = () => {
         <motion.div layout className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-8">
           <AnimatePresence mode='popLayout'>
             {filteredItems.map((item) => (
-              <motion.div 
+              <motion.div
                 layout
                 key={item.id}
                 initial={{ opacity: 0, scale: 0.9 }}
