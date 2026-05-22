@@ -1,50 +1,83 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is your turnaround time?",
-    answer: "Typically, we deliver the first draft within 24-48 hours. Depending on the complexity and volume, this may vary, but we prioritize speed without compromising quality."
+    question: "Tell me about your agency?",
+    answer:
+      "We are a full-service video editing agency specializing in short-form and long-form content. Our team of expert editors help brands and creators scale their content production without sacrificing quality.",
   },
   {
-    question: "Which platforms do you support?",
-    answer: "We specialize in TikTok, Instagram Reels, and YouTube Shorts. We also handle long-form YouTube editing and LinkedIn video content."
+    question: "What if I don't get the results?",
+    answer:
+      "We offer unlimited revisions until you are 100% satisfied. If for any reason you're not happy with the results, we'll work with you to make it right or provide a refund as per our guarantee policy.",
   },
   {
-    question: "Do you provide the raw files?",
-    answer: "Yes, we can provide project files upon request, depending on the plan you choose."
+    question: "Tell me about your content plan?",
+    answer:
+      "Our content plans are tailored to your specific goals and platforms. We handle everything from scripting and editing to captions and thumbnails, so you can focus on creating while we handle production.",
   },
   {
-    question: "How do revisions work?",
-    answer: "We offer unlimited revisions until you are 100% satisfied. Our goal is to make sure the content perfectly aligns with your brand voice."
+    question: "Why wouldn't I hire a freelancer?",
+    answer:
+      "Unlike freelancers, we offer a dedicated team, consistent availability, faster turnaround times, and a structured process. No more chasing editors or dealing with inconsistent quality.",
   },
   {
-    question: "How do I get started?",
-    answer: "Simply book a discovery call through our website. We'll discuss your goals, content style, and how we can best support your growth."
-  }
+    question: "What services will you provide?",
+    answer:
+      "We provide short-form video editing (TikTok, Reels, Shorts), long-form YouTube editing, thumbnail design, captions, sound design, and full content strategy support.",
+  },
+  {
+    question: "Tell me about your workflow?",
+    answer:
+      "You share your raw footage, we edit and deliver within 24–48 hours, you review and request revisions, and we finalize. Simple, fast, and fully managed from our end.",
+  },
 ];
 
-const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
-  const [isOpen, setIsOpen] = useState(false);
+interface FAQItemProps {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
 
+const FAQItem = ({ question, answer, isOpen, onToggle }: FAQItemProps) => {
   return (
-    <div className="bg-[var(--card-bg)] border border-[var(--card-border)] rounded-2xl overflow-hidden transition-colors duration-300 hover:border-[rgba(255,255,255,0.2)]">
-      <button className="w-full py-6 px-8 flex justify-between items-center text-left text-[1.1rem] font-semibold text-white bg-transparent border-none cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        <span>{question}</span>
-        {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-      </button>
-      <AnimatePresence>
+    <div
+      className="bg-[#1a1a1a] rounded-lg overflow-hidden cursor-pointer"
+      onClick={onToggle}
+    >
+      {/* Question row */}
+      <div className="flex justify-between items-center px-6 py-5">
+        <span className="text-white text-[0.95rem] font-normal leading-snug">
+          {question}
+        </span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="flex-shrink-0 ml-4 w-[30px] h-[30px] rounded-full bg-[#2a2a2a] flex items-center justify-center"
+        >
+          <ChevronDown size={16} className="text-white" />
+        </motion.div>
+      </div>
+
+      {/* Answer */}
+      <AnimatePresence initial={false}>
         {isOpen && (
-          <motion.div 
+          <motion.div
+            key="answer"
             initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="px-8 pb-6 text-[var(--text-secondary)] leading-[1.6]"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
           >
-            <p>{answer}</p>
+            <p className="text-[#999] text-sm leading-relaxed px-6 pb-5 m-0">
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -53,16 +86,62 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 };
 
 const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
+  const leftFaqs = faqs.filter((_, i) => i % 2 === 0);
+  const rightFaqs = faqs.filter((_, i) => i % 2 !== 0);
+
   return (
-    <section id="faq" className="py-20 bg-black">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-[clamp(1rem,6vw,3rem)] font-bold leading-[1.1] mb-6 tracking-[-2px] text-[#a8aeb6]">Frequently Asked <span className="text-gradient">Questions</span></h2>
+    <section id="faq" className="bg-[#0d0d0d] py-20 px-5">
+      <div className="max-w-[1000px] mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <p className="text-[#888] text-[0.7rem] font-semibold tracking-[0.15em] uppercase mb-3">
+            Any Queries You Have
+          </p>
+          <h2 className="text-[#d0d0d0] text-[clamp(1.8rem,4vw,2.6rem)] font-normal m-0 leading-tight">
+            Questions You May{" "}
+            <span className="text-white font-bold">Ask</span>
+          </h2>
         </div>
-        <div className="max-w-[800px] mx-auto flex flex-col gap-4">
-          {faqs.map((faq, index) => (
-            <FAQItem key={index} {...faq} />
-          ))}
+
+        {/* Two independent flex columns */}
+        <div className="flex gap-4 items-start">
+          {/* Left column */}
+          <div className="flex-1 flex flex-col gap-4">
+            {leftFaqs.map((faq, i) => {
+              const originalIndex = i * 2;
+              return (
+                <FAQItem
+                  key={originalIndex}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === originalIndex}
+                  onToggle={() => handleToggle(originalIndex)}
+                />
+              );
+            })}
+          </div>
+
+          {/* Right column */}
+          <div className="flex-1 flex flex-col gap-4">
+            {rightFaqs.map((faq, i) => {
+              const originalIndex = i * 2 + 1;
+              return (
+                <FAQItem
+                  key={originalIndex}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === originalIndex}
+                  onToggle={() => handleToggle(originalIndex)}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
